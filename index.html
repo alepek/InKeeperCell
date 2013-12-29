@@ -3,49 +3,63 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	<title>INC - Welcome</title>
+	<title>IKC</title>
+	<link rel="stylesheet" href="css/foundation.min.css">
 	<link rel="stylesheet" href="css/base.css">
+
 </head>
 <body>
-	<div id='inkeeper'>
-		<h3 class='heading'>inc v0.1</h3>
-		<div class='controls'>
-			<button id='add-character'>Add</button>
-			<button id='roll-initiatives'>Roll</button>
-		</div>
-		<ul id='character-list'>
+	<div class='row'>
+		<div id='inkeeper'>
+			<div class='small-12 columns'>
+				<h3 class='heading'>InKeeperCell v 0.2</h3>
+			</div>
 
-		</ul>
+			<div class='controls small-12 columns'>
+				<button class='button small' id='add-character'>Add</button>
+				<button class='button small' id='roll-initiatives'>Roll</button>
+			</div>
+			<div class='small-12 columns'>
+				<ul id='character-list'>
+			
+				</ul>
+			</div>
+		</div>
 	</div>
 
 	<script type="text/template" id='character-template'>
-		<div class='character'>
-			<div class='read-mode'>
-				<p class='name'>Name: <%- name %></p>
-				<p class='init'>Init: <%- init %></p>
-				<p class='initBonus'>Bonus: <%- initBonus %></p>
-				<p class='enemy'>Enemy: <%- enemy%> </p>
-			</div>
-			<div class='edit-mode hide'>
-				<input type='text' class='name-input' placeholder='name'/>
-				<input type='text' class='init-input' placeholder='init-bonus'/>
-				<span>Enemy</span>
-				<input type='checkbox' class='enemy-checkbox' checked/>
-				<br/>
-				<button class='save'>Save</button>
-				<button class='cancel'>Cancel</button>
-			</div>
-			<button class='remove'>Remove</button>
-			<button class='edit'>Edit</button>
+		<form class='character' onsubmit='return false;'>
+			<fieldset>
+				<legend>
+					<span class='name'><%- name %></p>
+				</legend>
+				<div class='read-mode'>
+					<p class='init'>Init: <%- init %></p>
+					<p class='initBonus'>Bonus: <%- initBonus %></p>
+					<button class='remove button tiny'>Remove</button>
+					<button class='edit button tiny'>Edit</button>
+					<button class='clone button tiny'>Clone</button>
+				</div>
+				<div class='edit-mode hide'>
+					<input type='text' class='name-input' placeholder='name'/>
+					<input type='text' class='init-input' placeholder='init-bonus'/>
+					<span>Enemy</span>
+					<input type='checkbox' class='enemy-checkbox' checked/>
+					<br/>
+					<button class='save button tiny'>Save</button>
+					<button class='cancel button tiny'>Cancel</button>
+				</div>
+			</fieldset>
 		</div>
 	</script>
 
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/underscore-min.js"></script>
-	<script src="js/lib/backbone.js"></script>
-	<script src="js/lib/backbone.localStorage.js"></script> 
+	<script src="js/lib/backbone.min.js"></script>
+	<script src="js/lib/backbone.localStorage.min.js"></script> 
 	<script src="js/models/character.js"></script>
 	<script src="js/diceroller.js"></script>
+	<script src="js/rulesystem.js"></script>
 	<script src="js/collections/characters.js"></script>
 	<script src="js/views/characters.js"></script>
 	<script src="js/views/app.js"></script>

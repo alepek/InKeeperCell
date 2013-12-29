@@ -5,7 +5,7 @@ var CharacterList = Backbone.Collection.extend({
 	localStorage: new Backbone.LocalStorage('inc-localstorage'),
 
 	rollInitiatives: function(){
-		
+
 	},
 	getCharacters: function(){
 		return this.toArray();
