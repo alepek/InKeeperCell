@@ -10,12 +10,13 @@ app.CharacterView = Backbone.View.extend({
 		'click .edit' : 'edit',
 		'click .save' : 'done',
 		'click .cancel' : 'cancel',
-		'click .clone' : 'beginClone'
+		'click .clone' : 'beginClone',
 	},
 
 	initialize: function(){
 		this.listenTo(this.model, 'destroy', this.remove);
 		this.listenTo(this.model, 'change', this.render);		
+		this.listenTo(this.model, 'roll', this.roll);		
 	},
 	render: function(){
 		this.$el.html(this.template(this.model.attributes));
@@ -33,11 +34,20 @@ app.CharacterView = Backbone.View.extend({
 	},
 
 	roll: function(){
-
+		var result = app.DiceRoller.rollD10(1, false);
+		var roll = parseInt(result.result) + parseInt(this.model.get('initBonus'));
+		this.model.set('init', roll);
+		this.model.save(this.model.attributes);
 	},
 
-	clear: function(){
-		this.model.destroy();
+	clear: function(){		
+		this.$el.find('.character').css('transition', 'all 0.3s ease');
+		this.$el.find('.character').css('opacity', 0);
+		var that = this;
+		var done = function() {
+			that.model.destroy();
+		}
+		setTimeout(done, 300);
 	},
 	beginClone: function()
 	{	// let's just trigger another event and let the AppView handle it.

@@ -3,31 +3,31 @@ var app = app || {};
 app.DiceRoller = {
 	rollD4: function(numDice, exploding)
 	{
-		return DiceRoller.GDR(4, numDice, exploding);
+		return this.genericDiceRoll(4, numDice, exploding);
 	},
 	rollD6: function(numDice, exploding)
 	{
-		return DiceRoller.GDR(6, numDice, exploding);
+		return this.genericDiceRoll(6, numDice, exploding);
 	},
 	rollD8: function(numDice, exploding)
 	{
-		return DiceRoller.GDR(8, numDice, exploding);
+		return this.genericDiceRoll(8, numDice, exploding);
 	},
 	rollD10: function(numDice, exploding)
 	{
-		return DiceRoller.GDR(10, numDice, exploding);
+		return this.genericDiceRoll(10, numDice, exploding);
 	},
 	rollD12: function(numDice, exploding)
 	{
-		return DiceRoller.GDR(12, numDice, exploding);
+		return this.genericDiceRoll(12, numDice, exploding);
 	},
 	rollD20: function(numDice, exploding)
 	{
-		return DiceRoller.GDR(20, numDice, exploding);
+		return this.genericDiceRoll(20, numDice, exploding);
 	},
 	rollD100: function(numDice, exploding)
 	{
-		return DiceRoller.GDR(100, numDice, exploding);
+		return this.genericDiceRoll(100, numDice, exploding);
 	},
 	genericDiceRoll: function(diceMax, numDice, exploding)
 	{
