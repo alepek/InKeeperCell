@@ -1,3 +1,4 @@
+'use strict';
 var app = app || {};
 
 app.AppView = Backbone.View.extend({
@@ -12,8 +13,8 @@ app.AppView = Backbone.View.extend({
 
 	initialize: function(){
 		this.listenTo(app.Characters, 'add', this.addCharacter);
-		this.listenTo(app.Characters, 'cloneCharacter', this.cloneCharacter)
-		this.listenTo(app.Characters, 'sort', this.reRender)
+		this.listenTo(app.Characters, 'cloneCharacter', this.cloneCharacter);
+		this.listenTo(app.Characters, 'sort', this.reRender);
 		
 		app.Characters.fetch();
 	},
@@ -23,20 +24,20 @@ app.AppView = Backbone.View.extend({
 
 		for (var i = 0; i <args.models.length; i++) {
 			this.addCharacter(args.models[i]);
-		};
+		}
 	},
-	cloneCharacter: function(character) {
+	cloneCharacter: function(character){
 		var clone = character.clone();
-		var character = new app.Character();
-		character.attributes = clone.attributes;
+		var newCharacter = new app.Character();
+		newCharacter.attributes = clone.attributes;
 		clone = null;
-		app.Characters.create(character);
+		app.Characters.create(newCharacter);
 	},
 	createCharacter: function(){
 		var character = new app.Character();
 		app.Characters.create(character);
 	},
-	addCharacter: function(character) {	
+	addCharacter: function(character){
 		var view = new app.CharacterView({model: character });
 		this.$el.find('#character-list').append(view.render().el);
 	},

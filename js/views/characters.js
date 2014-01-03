@@ -1,3 +1,4 @@
+'use strict';
 var app = app || {};
 
 app.CharacterView = Backbone.View.extend({
@@ -15,8 +16,8 @@ app.CharacterView = Backbone.View.extend({
 
 	initialize: function(){
 		this.listenTo(this.model, 'destroy', this.remove);
-		this.listenTo(this.model, 'change', this.render);		
-		this.listenTo(this.model, 'roll', this.roll);		
+		this.listenTo(this.model, 'change', this.render);
+		this.listenTo(this.model, 'roll', this.roll);
 	},
 	render: function(){
 		this.$el.html(this.template(this.model.attributes));
@@ -40,13 +41,13 @@ app.CharacterView = Backbone.View.extend({
 		this.model.save(this.model.attributes);
 	},
 
-	clear: function(){		
+	clear: function(){
 		this.$el.find('.character').css('transition', 'all 0.3s ease');
 		this.$el.find('.character').css('opacity', 0);
 		var that = this;
 		var done = function() {
 			that.model.destroy();
-		}
+		};
 		setTimeout(done, 300);
 	},
 	beginClone: function()

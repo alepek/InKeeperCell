@@ -1,3 +1,4 @@
+"use strict";
 var app = app || {};
 
 var CharacterList = Backbone.Collection.extend({
